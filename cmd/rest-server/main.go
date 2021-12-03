@@ -6,10 +6,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/config"
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/server"
 	"github.com/joho/godotenv"
 	"go.uber.org/zap"
+
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/config"
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/server"
 )
 
 //go:embed static

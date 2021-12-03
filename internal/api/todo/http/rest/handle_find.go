@@ -3,11 +3,11 @@ package rest
 import (
 	"net/http"
 
+	"github.com/gin-gonic/gin"
+
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api"
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
-
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/resputil"
-	"github.com/gin-gonic/gin"
 )
 
 type FindTodoRequest struct {

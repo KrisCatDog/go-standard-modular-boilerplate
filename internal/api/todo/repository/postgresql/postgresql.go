@@ -1,8 +1,9 @@
 package postgresql
 
 import (
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/db"
 	"github.com/jackc/pgx/v4/pgxpool"
+
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/db"
 )
 
 type Todo struct {

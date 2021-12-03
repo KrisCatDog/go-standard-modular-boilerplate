@@ -5,14 +5,15 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/api/openapi"
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/http/rest"
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/repository/postgresql"
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/service"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"go.uber.org/zap"
+
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/api/openapi"
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/http/rest"
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/repository/postgresql"
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/service"
 )
 
 type Config struct {

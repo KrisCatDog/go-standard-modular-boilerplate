@@ -3,8 +3,9 @@ package rest
 import (
 	"context"
 
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
 	"github.com/gin-gonic/gin"
+
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
 )
 
 type TodoService interface {

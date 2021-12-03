@@ -3,9 +3,10 @@ package postgresql
 import (
 	"context"
 
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
 	sq "github.com/Masterminds/squirrel"
 	"github.com/georgysavva/scany/pgxscan"
+
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
 )
 
 func (t *Todo) List(ctx context.Context) ([]todo.Todo, error) {

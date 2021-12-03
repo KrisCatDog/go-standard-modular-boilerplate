@@ -3,8 +3,9 @@ package rest
 import (
 	"net/http"
 
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/resputil"
 	"github.com/gin-gonic/gin"
+
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/resputil"
 )
 
 type ListTodosResponse struct {

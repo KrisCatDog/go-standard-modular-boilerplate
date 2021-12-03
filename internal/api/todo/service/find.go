@@ -3,11 +3,11 @@ package service
 import (
 	"context"
 
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api"
-	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 	"github.com/georgysavva/scany/pgxscan"
 
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api"
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
 func (t *Todo) Find(ctx context.Context, id int64) (todo.Todo, error) {
