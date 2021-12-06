@@ -30,6 +30,7 @@ func (h *TodoHandler) create(c *gin.Context) {
 
 	if err := h.validate.Struct(&req); err != nil {
 		resputil.SendValidationFailed(c, err)
+
 		return
 	}
 
