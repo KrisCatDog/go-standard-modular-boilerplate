@@ -31,12 +31,12 @@ func (c validationErrorCode) String() string {
 	}[c]
 }
 
-// errorsWrapper map general errors with the validation rules as a key.
+// errorsWrapper maps general errors with the validation rules as a key.
 var errorsWrapper = map[string]validationErrorCode{
 	"required": ErrRequired,
 }
 
-// SendValidationFailed returns a formatted response messages related to validation errors.
+// SendValidationFailed returns formatted response messages related to validation errors.
 func SendValidationFailed(c *gin.Context, err error) {
 	errs := make(map[string]interface{})
 

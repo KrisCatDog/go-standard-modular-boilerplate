@@ -17,6 +17,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/service"
 )
 
+// Config defines the configuration required by server handlers.
 type Config struct {
 	Address  string
 	DB       *pgxpool.Pool
@@ -25,6 +26,7 @@ type Config struct {
 	Validate *validator.Validate
 }
 
+// New returns a configured server that contains all internal API codebase.
 func New(cfg Config) (*http.Server, error) {
 	// Construct new gin with default options.
 	r := gin.Default()

@@ -10,12 +10,14 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
+// baseSuccessResponse represents base JSON response structure for failed request.
 type baseErrorResponse struct {
 	Code    api.GeneralErrorCode `json:"code"`
 	Message string               `json:"message"`
 	Errors  interface{}          `json:"errors"`
 }
 
+// SendError returns formatted JSON response for failed request.
 func SendError(c *gin.Context, err error) {
 	var httpStatus int
 	var resp baseErrorResponse
