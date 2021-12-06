@@ -36,7 +36,7 @@ var errorsWrapper = map[string]validationErrorCode{
 	"required": ErrRequired,
 }
 
-// SendValidationFailed returns formatted response messages related to validation errors.
+// SendValidationFailed returns formatted JSON response messages related to validation errors.
 func SendValidationFailed(c *gin.Context, err error) {
 	errs := make(map[string]interface{})
 
