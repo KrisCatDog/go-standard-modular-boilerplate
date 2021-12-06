@@ -11,6 +11,7 @@ import (
 
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/config"
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/server"
+	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/validator"
 )
 
 //go:embed static
@@ -37,11 +38,14 @@ func run() error {
 		return err
 	}
 
+	validate := validator.Default()
+
 	srv, err := server.New(server.Config{
-		Address: fmt.Sprintf(":%s", os.Getenv("APP_PORT")),
-		DB:      pool,
-		Logger:  logger,
-		Static:  static,
+		Address:  fmt.Sprintf(":%s", os.Getenv("APP_PORT")),
+		DB:       pool,
+		Logger:   logger,
+		Static:   static,
+		Validate: validate,
 	})
 	if err != nil {
 		return err

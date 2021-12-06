@@ -12,8 +12,8 @@ import (
 )
 
 type CreateTodoRequest struct {
-	Task   string `json:"task"`
-	IsDone bool   `json:"is_done"`
+	Task   string `json:"task" validate:"required"`
+	IsDone bool   `json:"is_done" validate:"required"`
 }
 
 type CreateTodoResponse struct {
@@ -28,6 +28,11 @@ func (h *TodoHandler) create(c *gin.Context) {
 		return
 	}
 
+	if err := h.validate.Struct(&req); err != nil {
+		resputil.SendValidationFailed(c, err)
+		return
+	}
+
 	newTodo, err := h.todoSvc.Create(c, todo.CreateParams{
 		Task:   req.Task,
 		IsDone: false,
@@ -38,7 +43,7 @@ func (h *TodoHandler) create(c *gin.Context) {
 		return
 	}
 
-	resputil.SendJSON(c, http.StatusCreated, "Todo successfully created", &CreateTodoResponse{
+	resputil.SendSuccess(c, http.StatusCreated, "Todo successfully created", &CreateTodoResponse{
 		Todo: Todo{
 			ID:     newTodo.ID,
 			Task:   newTodo.Task,

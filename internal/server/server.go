@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"go.uber.org/zap"
 
@@ -17,10 +18,11 @@ import (
 )
 
 type Config struct {
-	Address string
-	DB      *pgxpool.Pool
-	Logger  *zap.Logger
-	Static  embed.FS
+	Address  string
+	DB       *pgxpool.Pool
+	Logger   *zap.Logger
+	Static   embed.FS
+	Validate *validator.Validate
 }
 
 func New(cfg Config) (*http.Server, error) {

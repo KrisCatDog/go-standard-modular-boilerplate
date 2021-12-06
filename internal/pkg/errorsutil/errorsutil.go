@@ -9,10 +9,10 @@ import (
 type InternalError struct {
 	err  error
 	msg  string
-	code api.ErrorCode
+	code api.GeneralErrorCode
 }
 
-func Wrapf(err error, msg string, code api.ErrorCode) error {
+func Wrapf(err error, msg string, code api.GeneralErrorCode) error {
 	return &InternalError{
 		err:  err,
 		msg:  msg,
@@ -28,6 +28,6 @@ func (e InternalError) Error() string {
 	return e.msg
 }
 
-func (e *InternalError) Code() api.ErrorCode {
+func (e *InternalError) Code() api.GeneralErrorCode {
 	return e.code
 }

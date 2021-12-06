@@ -33,7 +33,7 @@ func (h *TodoHandler) delete(c *gin.Context) {
 		return
 	}
 
-	resputil.SendJSON(c, http.StatusOK, "Todo successfully deleted", &DeleteTodoResponse{
+	resputil.SendSuccess(c, http.StatusOK, "Todo successfully deleted", &DeleteTodoResponse{
 		Todo: Todo{
 			ID: deletedID,
 		},

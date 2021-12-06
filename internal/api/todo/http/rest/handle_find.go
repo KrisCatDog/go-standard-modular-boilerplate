@@ -33,7 +33,7 @@ func (h *TodoHandler) find(c *gin.Context) {
 		return
 	}
 
-	resputil.SendJSON(c, http.StatusOK, "Successfully got todo details", &FindTodoResponse{
+	resputil.SendSuccess(c, http.StatusOK, "Successfully got todo details", &FindTodoResponse{
 		Todo: Todo{
 			ID:     singleTodo.ID,
 			Task:   singleTodo.Task,

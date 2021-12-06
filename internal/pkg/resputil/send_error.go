@@ -10,15 +10,15 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
-type errorResponse struct {
-	Code    api.ErrorCode `json:"code"`
-	Message string        `json:"message"`
-	Errors  interface{}   `json:"errors"`
+type baseErrorResponse struct {
+	Code    api.GeneralErrorCode `json:"code"`
+	Message string               `json:"message"`
+	Errors  interface{}          `json:"errors"`
 }
 
 func SendError(c *gin.Context, err error) {
 	var httpStatus int
-	var resp errorResponse
+	var resp baseErrorResponse
 	var internalErr *errorsutil.InternalError
 
 	if errors.As(err, &internalErr) {
@@ -27,7 +27,7 @@ func SendError(c *gin.Context, err error) {
 			httpStatus = http.StatusNotFound
 		case api.ErrCodeBadRequest:
 			httpStatus = http.StatusBadRequest
-		case api.ErrCodeInternalUnknown:
+		case api.ErrCodeInternalServer:
 			fallthrough
 		default:
 			httpStatus = http.StatusInternalServerError
@@ -39,7 +39,7 @@ func SendError(c *gin.Context, err error) {
 	} else {
 		httpStatus = http.StatusInternalServerError
 
-		resp.Code = api.ErrCodeInternalUnknown
+		resp.Code = api.ErrCodeInternalServer
 		resp.Message = "Internal server error"
 	}
 

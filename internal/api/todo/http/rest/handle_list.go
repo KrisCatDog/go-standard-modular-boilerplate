@@ -28,7 +28,7 @@ func (h *TodoHandler) list(c *gin.Context) {
 		todos[i].IsDone = item.IsDone
 	}
 
-	resputil.SendJSON(c, http.StatusOK, "Successfully got todos list", &ListTodosResponse{
+	resputil.SendSuccess(c, http.StatusOK, "Successfully got todos list", &ListTodosResponse{
 		Todos: todos,
 	})
 }

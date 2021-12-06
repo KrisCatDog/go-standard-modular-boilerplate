@@ -49,7 +49,7 @@ func (h *TodoHandler) update(c *gin.Context) {
 		return
 	}
 
-	resputil.SendJSON(c, http.StatusOK, "Todo successfully updated", &UpdateTodoResponse{
+	resputil.SendSuccess(c, http.StatusOK, "Todo successfully updated", &UpdateTodoResponse{
 		Todo: Todo{
 			ID: updatedID,
 		},
