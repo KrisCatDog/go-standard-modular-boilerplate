@@ -1,1 +1,1 @@
-package postgresql
+package postgresql_test
