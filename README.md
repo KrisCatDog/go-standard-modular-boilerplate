@@ -15,6 +15,12 @@ The various packages used are as follows:
 - [Go Dot ENV](https://github.com/joho/godotenv) - Dot ENV vars loader
 - [Zap](https://github.com/uber-go/zap) - Logger package
 
+## Style Guidelines
+
+This boilerplate follows the idiomatic Go code rules, related references below:
+
+- [Effective Go](https://go.dev/doc/effective_go) - Official Go documentation
+
 ## Installation
 
 This boilerplate requires [Golang](https://golang.org/) v1.17+ to run.
