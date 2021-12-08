@@ -7,6 +7,7 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
+// Default constructs a new validator instance with custom configuration and new rules.
 func Default() *validator.Validate {
 	validate := validator.New()
 

@@ -9,6 +9,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
+// Delete removes the existing Todo record with its business logic.
 func (t *Todo) Delete(ctx context.Context, id int64) (int64, error) {
 	deletedID, err := t.todoRepo.Delete(ctx, id)
 	if err != nil {

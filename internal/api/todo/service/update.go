@@ -10,6 +10,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
+// Update updates the existing Todo record with its business logic.
 func (t *Todo) Update(ctx context.Context, id int64, params todo.UpdateParams) (int64, error) {
 	updatedID, err := t.todoRepo.Update(ctx, id, params)
 	if err != nil {

@@ -17,7 +17,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo/service"
 )
 
-// Config defines the configuration required by server handlers.
+// Config defines the required configurations by the server.
 type Config struct {
 	Address  string
 	DB       *pgxpool.Pool

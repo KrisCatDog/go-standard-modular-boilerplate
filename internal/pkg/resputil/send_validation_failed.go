@@ -19,7 +19,7 @@ type fieldError struct {
 	Message string              `json:"message"`
 }
 
-// General internal errors list.
+// Validator internal errors list.
 const (
 	ErrRequired validationErrorCode = iota + 100 // Represents that the field is not filled
 )
@@ -31,7 +31,7 @@ func (c validationErrorCode) String() string {
 	}[c]
 }
 
-// errorsWrapper maps general errors with the validation rules as a key.
+// errorsWrapper maps validation errors with the validation rules as a key.
 var errorsWrapper = map[string]validationErrorCode{
 	"required": ErrRequired,
 }

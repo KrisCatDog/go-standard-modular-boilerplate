@@ -8,6 +8,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
+// Create stores a new Todo record with its business logic.
 func (t *Todo) Create(ctx context.Context, params todo.CreateParams) (todo.Todo, error) {
 	newTodo, err := t.todoRepo.Create(ctx, params)
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 )
 
+// NewPostgreSQL returns new PostgreSQL database connection using pgxpool driver.
 func NewPostgreSQL() (*pgxpool.Pool, error) {
 	dsn := url.URL{
 		Scheme: "postgres",

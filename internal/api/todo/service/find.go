@@ -10,6 +10,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
+// Find gets the Todo details with its business logic.
 func (t *Todo) Find(ctx context.Context, id int64) (todo.Todo, error) {
 	singleTodo, err := t.todoRepo.Find(ctx, id)
 	if err != nil {

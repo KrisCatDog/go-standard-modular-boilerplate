@@ -9,6 +9,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
 )
 
+// TodoService defines a contract for the handlers to be implemented.
 type TodoService interface {
 	Create(ctx context.Context, params todo.CreateParams) (todo.Todo, error)
 	List(ctx context.Context) ([]todo.Todo, error)
@@ -17,17 +18,20 @@ type TodoService interface {
 	Delete(ctx context.Context, id int64) (int64, error)
 }
 
+// TodoHandler defines a handler with the required dependencies.
 type TodoHandler struct {
 	validate *validator.Validate
 	todoSvc  TodoService
 }
 
+// NewTodoHandler returns an instance of TodoHandler.
 func NewTodoHandler(todoSvc TodoService) *TodoHandler {
 	return &TodoHandler{
 		todoSvc: todoSvc,
 	}
 }
 
+// Register registers the HTTP REST handlers route.
 func (h *TodoHandler) Register(r *gin.Engine) {
 	r.GET("/todos", h.list)
 	r.POST("/todos", h.create)
@@ -36,6 +40,7 @@ func (h *TodoHandler) Register(r *gin.Engine) {
 	r.DELETE("/todos/:id", h.delete)
 }
 
+// Todo defines an entity for the HTTP REST layer.
 type Todo struct {
 	ID     int64  `json:"id,omitempty"`
 	Task   string `json:"task,omitempty"`

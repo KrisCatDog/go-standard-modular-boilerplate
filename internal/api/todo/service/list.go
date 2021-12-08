@@ -8,6 +8,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/errorsutil"
 )
 
+// List gets the list of Todo records with its business logic.
 func (t *Todo) List(ctx context.Context) ([]todo.Todo, error) {
 	todos, err := t.todoRepo.List(ctx)
 	if err != nil {

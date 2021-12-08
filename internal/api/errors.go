@@ -1,13 +1,26 @@
 package api
 
-type GeneralErrorCode uint
+// CommonErrorCode represents a type of internal common errors code.
+type CommonErrorCode uint
 
+// CodeSuccess means request executed successfully.
 const CodeSuccess = 0
 
 const (
-	ErrCodeInternalServer   GeneralErrorCode = iota + 1 // Represents errors that occur in the internal codebase
-	ErrCodeInternalDatabase                             // Represents errors that occur in the database
-	ErrCodeNotFound                                     // Represents errors that occur because data was not found
-	ErrCodeBadRequest                                   // Represents errors that occur because the request does not match the expected format
-	ErrCodeFailedValidation                             // Represents errors that occur because the request does not meet the validation requirements
+	_ CommonErrorCode = iota // Skip the first value for success code
+
+	// ErrCodeInternalServer means an error occured in internal codebase.
+	ErrCodeInternalServer
+
+	// ErrCodeInternalDatabase means an error occured in database.
+	ErrCodeInternalDatabase
+
+	// ErrCodeNotFound means an error occured because data was not found.
+	ErrCodeNotFound
+
+	// ErrCodeBadRequest means an error occured because the request does not match with expected format.
+	ErrCodeBadRequest
+
+	// ErrCodeFailedValidation means an error occured because the request does not meet the validation rules.
+	ErrCodeFailedValidation
 )

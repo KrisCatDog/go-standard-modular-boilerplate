@@ -7,6 +7,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/db"
 )
 
+// Update updates an existing Todo record, returns deleted ID.
 func (t *Todo) Update(ctx context.Context, id int64, params todo.UpdateParams) (int64, error) {
 	updatedID, err := t.q.UpdateTodo(ctx, db.UpdateTodoParams{
 		ID:     id,

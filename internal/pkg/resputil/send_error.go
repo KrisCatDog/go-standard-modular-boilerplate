@@ -12,9 +12,9 @@ import (
 
 // baseSuccessResponse represents base JSON response structure for failed request.
 type baseErrorResponse struct {
-	Code    api.GeneralErrorCode `json:"code"`
-	Message string               `json:"message"`
-	Errors  interface{}          `json:"errors"`
+	Code    api.CommonErrorCode `json:"code"`
+	Message string              `json:"message"`
+	Errors  interface{}         `json:"errors"`
 }
 
 // SendError returns formatted JSON response for failed request.

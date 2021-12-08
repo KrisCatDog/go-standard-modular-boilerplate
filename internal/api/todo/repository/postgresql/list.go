@@ -9,6 +9,7 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/api/todo"
 )
 
+// List returns the list of Todo records.
 func (t *Todo) List(ctx context.Context) ([]todo.Todo, error) {
 	var todos []todo.Todo
 

@@ -10,16 +10,19 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/resputil"
 )
 
-type DeleteTodoRequest struct {
+// deleteTodoRequest defines the payload of request URI to delete a todo.
+type deleteTodoRequest struct {
 	ID int64 `uri:"id" binding:"required"`
 }
 
-type DeleteTodoResponse struct {
+// deleteTodoResponse defines the payload of response body after deleting Todo.
+type deleteTodoResponse struct {
 	Todo Todo `json:"todo"`
 }
 
+// delete handle incoming DELETE request to delete a Todo from the datastore.
 func (h *TodoHandler) delete(c *gin.Context) {
-	var reqURI DeleteTodoRequest
+	var reqURI deleteTodoRequest
 	if err := c.ShouldBindUri(&reqURI); err != nil {
 		resputil.SendError(c, errorsutil.Wrapf(err, "Failed to bind request URI parameters", api.ErrCodeBadRequest))
 
@@ -33,7 +36,7 @@ func (h *TodoHandler) delete(c *gin.Context) {
 		return
 	}
 
-	resputil.SendSuccess(c, http.StatusOK, "Todo successfully deleted", &DeleteTodoResponse{
+	resputil.SendSuccess(c, http.StatusOK, "Todo successfully deleted", &deleteTodoResponse{
 		Todo: Todo{
 			ID: deletedID,
 		},

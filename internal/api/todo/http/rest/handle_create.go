@@ -11,17 +11,20 @@ import (
 	"github.com/KrisCatDog/go-standard-modular-boilerplate/internal/pkg/resputil"
 )
 
-type CreateTodoRequest struct {
+// createTodoRequest defines the payload of request body to create a new Todo.
+type createTodoRequest struct {
 	Task   string `json:"task" validate:"required"`
 	IsDone bool   `json:"is_done" validate:"required"`
 }
 
-type CreateTodoResponse struct {
+// createTodoResponse defines the payload of response body after creating Todo.
+type createTodoResponse struct {
 	Todo Todo `json:"todo"`
 }
 
+// create handle incoming POST request to create a new Todo record.
 func (h *TodoHandler) create(c *gin.Context) {
-	var req CreateTodoRequest
+	var req createTodoRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		resputil.SendError(c, errorsutil.Wrapf(err, "Invalid type of request body", api.ErrCodeBadRequest))
 
@@ -44,7 +47,7 @@ func (h *TodoHandler) create(c *gin.Context) {
 		return
 	}
 
-	resputil.SendSuccess(c, http.StatusCreated, "Todo successfully created", &CreateTodoResponse{
+	resputil.SendSuccess(c, http.StatusCreated, "Todo successfully created", &createTodoResponse{
 		Todo: Todo{
 			ID:     newTodo.ID,
 			Task:   newTodo.Task,
