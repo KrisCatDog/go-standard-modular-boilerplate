@@ -28,7 +28,7 @@ const (
 func (c validationErrorCode) String() string {
 	return [...]string{
 		"The %v field is required", // ErrRequired - required
-	}[c]
+	}[c-100]
 }
 
 // errorsWrapper maps validation errors with the validation rules as a key.
