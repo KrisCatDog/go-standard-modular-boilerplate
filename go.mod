@@ -8,6 +8,7 @@ require (
 	github.com/getkin/kin-openapi v0.83.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/gin-contrib/cors v1.3.1
+	github.com/gin-contrib/zap v0.0.1
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/golang-migrate/migrate/v4 v4.15.1

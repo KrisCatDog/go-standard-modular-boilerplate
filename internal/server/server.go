@@ -4,8 +4,10 @@ import (
 	"embed"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gin-contrib/cors"
+	ginzap "github.com/gin-contrib/zap"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/jackc/pgx/v4/pgxpool"
@@ -34,6 +36,10 @@ func New(cfg Config) (*http.Server, error) {
 	// Set gin mode that depends on ENV.
 	gin.SetMode(os.Getenv("GIN_MODE"))
 
+	// Register ginzap middleware.
+	r.Use(ginzap.Ginzap(cfg.Logger, time.RFC3339, true))
+	r.Use(ginzap.RecoveryWithZap(cfg.Logger, true))
+
 	// Implement cors middleware to gin.
 	r.Use(cors.Default())
 
@@ -52,7 +58,7 @@ func New(cfg Config) (*http.Server, error) {
 	})
 
 	// Register all REST HTTP handlers.
-	rest.NewTodoHandler(todoSvc).Register(r)
+	rest.NewTodoHandler(cfg.Validate, todoSvc).Register(r)
 
 	return &http.Server{
 		Addr:    cfg.Address,

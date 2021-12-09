@@ -25,9 +25,10 @@ type TodoHandler struct {
 }
 
 // NewTodoHandler returns an instance of TodoHandler.
-func NewTodoHandler(todoSvc TodoService) *TodoHandler {
+func NewTodoHandler(validate *validator.Validate, todoSvc TodoService) *TodoHandler {
 	return &TodoHandler{
-		todoSvc: todoSvc,
+		validate: validate,
+		todoSvc:  todoSvc,
 	}
 }
 
